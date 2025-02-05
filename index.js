@@ -8,13 +8,13 @@ const app = express();
 const port = 2000;
 
 // Specify the directory where you want to save the images
-const desktopPath = path.join(require("os").homedir(), "Desktop"); // Get the path to the desktop
-const uploadDirectory = path.join(desktopPath, "uploads"); // Create a path for the uploads directory
+//const desktopPath = path.join(require("os").homedir(), "Desktop"); // Get the path to the desktop
+//const uploadDirectory = path.join(desktopPath, "uploads"); // Create a path for the uploads directory
 
 // Ensure that the specified directory exists
-if (!fs.existsSync(uploadDirectory)) {
-  fs.mkdirSync(uploadDirectory);
-}
+//if (!fs.existsSync(uploadDirectory)) {
+//  fs.mkdirSync(uploadDirectory);
+//}
 
 // Enable CORS
 app.use(cors());
@@ -39,7 +39,7 @@ app.post("/upload-screenshot", (req, res) => {
     const fileName = `screenshot_${Date.now()}.png`;
 
     // Specify the full path where you want to save the image
-    const filePath = path.join(uploadDirectory, fileName);
+    const filePath = path.join("/", fileName);
 
     // Write the image data to the specified file path
     fs.writeFileSync(filePath, imageData, { encoding: "base64" });
